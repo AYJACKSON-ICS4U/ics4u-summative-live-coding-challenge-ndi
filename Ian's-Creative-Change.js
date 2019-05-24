@@ -7,23 +7,27 @@
 
 function setup() {
   createCanvas(600, 600);
-  circ = new circleOBJ();
+  let i = random(600);
+  let z = random(600);
+  let p =random(600);
+  circ = new circleOBJ(i,z,p);
+
 }
 
 class circleOBJ{
-    constructor(){
-      this.x = mouseX;
-      this.y = mouseY;
-      this.d = 400
+    constructor(x,y,d){
+      this.x = x;
+      this.y = y;
+      this.d = d;
       
     }
-  move(){
-    this.x = mouseX;
-    this.y = mouseY;
-    this.d = random(200);
-  }
   display(){
-    ellipse(this.x,this.y,this.d);    
+    if (this.d > 10){
+    this.d= this.d*0.8
+    fill(this.d*0.9, (this.y*this.x)*0.03,this.y*0.8)
+    ellipse(this.x,this.y,this.d);
+    circ.display();
+    }
 }
 
   
@@ -31,10 +35,5 @@ class circleOBJ{
 
 function draw(){
   circ.display();
-  circ.move();
-  
-  
+
 }
-
-
-
