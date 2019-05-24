@@ -24,15 +24,23 @@ class Square {
   display(){
     rect(this.x, this.y, this.w, this.h)
     
-    if (this.w < 300){
+    if (width > 300){
       this.w += 10;
       this.h += 10;
       square.display();
+    } else if (width < 300){
+      this.w -= 10;
+      this.h += 10;
+      square.display();
+    } else if (width < 300){
+      this.w -= 10;
+      this.h -= 10;
+      square.display();
+    } else if (width > 300){
+      this.w += 10;
+      this.h -= 10;
+      square.display();
     } else {
-      
-      fill(255);
-      text('REACHED', 100, 400);
-
       square.update();
     }
   }
@@ -40,13 +48,22 @@ class Square {
     let updateCounter = 1;
     
     if (updateCounter === 1){
-      
+      this.x = width;
+      this.y = 0;
+      this.w = -100;
+      this.h = 100;
     } else if (updateCounter === 2){
-      
+      this.x = width;
+      this.y = height;
+      this.w = -100;
+      this.h = -100;      
     } else if (updateCounter === 3){
-      
+      this.x = 0;
+      this.y = height;
+      this.w = 100;
+      this.h = -100;      
     }
-    
+    square.run();
     updateCounter++;
   }
 }
