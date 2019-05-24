@@ -1,4 +1,4 @@
-// Daniel Shiffman
+// Adapted from: Daniel Shiffman
 // http://codingtra.in
 // http://patreon.com/codingtrain
 
