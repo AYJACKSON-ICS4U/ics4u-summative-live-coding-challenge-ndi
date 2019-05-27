@@ -1,69 +1,70 @@
 function setup() {
   createCanvas(600, 600);
-  square = new Square(0, 0, 100, 100);
+  square1 = new Square(0, 0, 100, 100, 0);
 }
 
 function draw() {
   background(0);
   stroke(255);
   noFill();
-  square.run();
+  square1.display();
   noLoop();
 }
 
 class Square {
-  constructor(x, y, w, h){
+  constructor(x, y, w, h, u){
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
-  }
-  run(){
-    square.display();
+    this.u = 0;
   }
   display(){
-    rect(this.x, this.y, this.w, this.h)
     
-    if (width > 300){
+    rect(this.x, this.y, this.w, this.h);
+    console.log(this.u);
+    if (this.w < 300 && this.u === 0){
       this.w += 10;
       this.h += 10;
-      square.display();
-    } else if (width < 300){
+      square1.display();
+    } else if (this.w > -300 && this.u === 1){
       this.w -= 10;
       this.h += 10;
-      square.display();
-    } else if (width < 300){
+      square1.display();
+    } else if (this.w > -300 && this.u === 2){
       this.w -= 10;
       this.h -= 10;
-      square.display();
-    } else if (width > 300){
+      square1.display();
+    } else if (this.w < 300 && this.u === 3){
       this.w += 10;
       this.h -= 10;
-      square.display();
+      square1.display();
     } else {
-      square.update();
+      console.log("UPDATING");
+      if (this.u < 4){
+        square1.update(this.u);
+      }
     }
   }
-  update(){
-    let updateCounter = 1;
+  update(updateCounter){
     
-    if (updateCounter === 1){
+    if (updateCounter === 0){
       this.x = width;
       this.y = 0;
       this.w = -100;
       this.h = 100;
-    } else if (updateCounter === 2){
+    } else if (updateCounter === 1){
       this.x = width;
       this.y = height;
       this.w = -100;
       this.h = -100;      
-    } else if (updateCounter === 3){
+    } else if (updateCounter === 2){
       this.x = 0;
       this.y = height;
       this.w = 100;
       this.h = -100;      
     }
-    square.run();
-    updateCounter++;
+    this.u += 1;
+    square1.display();
   }
 }
