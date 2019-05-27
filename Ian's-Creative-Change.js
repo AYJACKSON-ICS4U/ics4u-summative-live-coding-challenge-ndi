@@ -9,7 +9,7 @@ function setup() {
   createCanvas(600, 600);
   let i = random(100,500);
   let z = random(100,500);
-  let p =random(100,500);
+  let p =random(400);
   circ = new circleOBJ(i,z,p);
 
 }
