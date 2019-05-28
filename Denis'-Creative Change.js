@@ -5,7 +5,7 @@ function setup() {
 
 function draw() {
   background(0);
-  stroke(255);
+  stroke(random(255), random(255), random(255));
   noFill();
   square1.display();
   noLoop();
