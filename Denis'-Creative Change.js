@@ -1,11 +1,12 @@
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(400, 400);
   square1 = new Square(0, 0, 100, 100, 0);
 }
 
 function draw() {
   background(0);
   stroke(random(255), random(255), random(255));
+  strokeWeight(1);
   noFill();
   square1.display();
   noLoop();
@@ -23,21 +24,21 @@ class Square {
     
     rect(this.x, this.y, this.w, this.h);
     console.log(this.u);
-    if (this.w < 300 && this.u === 0){
-      this.w += 10;
-      this.h += 10;
+    if (this.w < 200 && this.u === 0){
+      this.w += 3.5;
+      this.h += 3.5;
       square1.display();
-    } else if (this.w > -300 && this.u === 1){
-      this.w -= 10;
-      this.h += 10;
+    } else if (this.w > -200 && this.u === 1){
+      this.w -= 3.5;
+      this.h += 3.5;
       square1.display();
-    } else if (this.w > -300 && this.u === 2){
-      this.w -= 10;
-      this.h -= 10;
+    } else if (this.w > -200 && this.u === 2){
+      this.w -= 3.5;
+      this.h -= 3.5;
       square1.display();
-    } else if (this.w < 300 && this.u === 3){
-      this.w += 10;
-      this.h -= 10;
+    } else if (this.w < 200 && this.u === 3){
+      this.w += 3.5;
+      this.h -= 3.5;
       square1.display();
     } else {
       console.log("UPDATING");
