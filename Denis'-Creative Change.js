@@ -1,6 +1,6 @@
 function setup() {
-  createCanvas(400, 400);
-  square1 = new Square(0, 0, 100, 100, 0);
+  createCanvas(600, 600);
+  square1 = new Square(0, 0, width/8, width/8, 0);
 }
 
 function draw() {
@@ -24,19 +24,19 @@ class Square {
     
     rect(this.x, this.y, this.w, this.h);
     console.log(this.u);
-    if (this.w < 200 && this.u === 0){
+    if (this.w < width/2 && this.u === 0){
       this.w += 3.5;
       this.h += 3.5;
       square1.display();
-    } else if (this.w > -200 && this.u === 1){
+    } else if (this.w > -width/2 && this.u === 1){
       this.w -= 3.5;
       this.h += 3.5;
       square1.display();
-    } else if (this.w > -200 && this.u === 2){
+    } else if (this.w > -width/2 && this.u === 2){
       this.w -= 3.5;
       this.h -= 3.5;
       square1.display();
-    } else if (this.w < 200 && this.u === 3){
+    } else if (this.w < width/2 && this.u === 3){
       this.w += 3.5;
       this.h -= 3.5;
       square1.display();
@@ -53,20 +53,20 @@ class Square {
       stroke(random(255), random(255), random(255));
       this.x = width;
       this.y = 0;
-      this.w = -100;
-      this.h = 100;
+      this.w = -width/8;
+      this.h = width/8;
     } else if (updateCounter === 1){
       stroke(random(255), random(255), random(255));
       this.x = width;
       this.y = height;
-      this.w = -100;
-      this.h = -100;      
+      this.w = -width/8;
+      this.h = -width/8;      
     } else if (updateCounter === 2){
       stroke(random(255), random(255), random(255));
       this.x = 0;
       this.y = height;
-      this.w = 100;
-      this.h = -100;      
+      this.w = width/8;
+      this.h = -width/8;      
     }
     this.u += 1;
     square1.display();
