@@ -41,7 +41,7 @@ class Square {
       square1.display();
     } else {
       console.log("UPDATING");
-      if (this.u < 4){
+      if (this.u < 9){
         square1.update(this.u);
       }
     }
@@ -49,16 +49,19 @@ class Square {
   update(updateCounter){
     
     if (updateCounter === 0){
+      stroke(random(255), random(255), random(255));
       this.x = width;
       this.y = 0;
       this.w = -100;
       this.h = 100;
     } else if (updateCounter === 1){
+      stroke(random(255), random(255), random(255));
       this.x = width;
       this.y = height;
       this.w = -100;
       this.h = -100;      
     } else if (updateCounter === 2){
+      stroke(random(255), random(255), random(255));
       this.x = 0;
       this.y = height;
       this.w = 100;
