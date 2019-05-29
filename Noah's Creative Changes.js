@@ -1,13 +1,9 @@
-
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 800);
   
-  dot = new circ(width/2,height/2,100);
-  
-
-  
-  follow = new attractor();
-  
+  dot = new circ(0,0,100); 
+  dot1 = new circ(700,400,100);
+  dot2 = new circ(300,650,100);
 }
 
 class circ {
@@ -16,71 +12,52 @@ class circ {
     this.y = y;
     this.wid = wid;
     
-    this.counter = 0;
-    
     this.bx = x;
     this.by = y;
     this.bwid = wid;
     
-    this.bcounter = this.counter  
-    
+    this.position = new createVector(width/2, height/2);
+  }
+  
+  update() {
+    var mouse = new createVector(mouseX, mouseY);
+    var dir = mouse.sub(this.position); 
+    this.position.add(dir);
   }
   
   create() {
-    fill(255,0,0);
+    fill(50,255,100);
     
-    this.counter += 1;
-    
-    ellipse(this.x,this.y,this.wid);
-    
-    if(this.wid >5 ) {
-      this.wid -= 20;
+    if(this.wid  ) {
+      this.x += (this.position.x-this.x)/5;
+      this.y += (this.position.y-this.y)/5;
+      
+      ellipse(this.x,this.y,this.wid);
+      
+      this.wid -= 5;
       this.create();
     }
-    
   }
   
   reset() {
     this.x = this.bx;
     this.y = this.by;
     this.wid = this.bwid;
-    
-    this.counter = this.bcounter;
-    
   }
 }
 
-class attractor {
-  constructor() {
-    this.position = new createVector(width/2, height/2);
-  }
-  
-  update() {
-    var mouse = new createVector(mouseX, mouseY);
-    
-    var dir = mouse.sub(this.position);
-    
-    this.position.add(dir);
-  }
-  
-  display () {
-    fill(255,0,0);
-    ellipse(this.position.x,this.position.y,2,2);
-  }
-  
-}
-
-function draw() {
-  
+function draw() {  
   background(255,255,255);
-  
-  
-  dot.create();
-  
-  
-  dot.reset();
 
+  dot.update();
+  dot.create();
+  dot.reset();
   
-  follow.update();
-  follow.display();
+  dot1.update();
+  dot1.create();
+  dot1.reset();
+  
+  dot2.update();
+  dot2.create();
+  dot2.reset();
 }
