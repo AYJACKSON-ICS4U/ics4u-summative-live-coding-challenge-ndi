@@ -1,0 +1,19 @@
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(0);
+  drawCircle(width/2, height/2, 300);
+}
+
+function drawCircle(x,y,d){
+  stroke(255);
+  noFill();
+  ellipse(x,y,d);
+  if(d > 2){
+    let newD = d / 2;
+    drawCircle(x + d, y-newD, newD);
+    drawCircle(x - d, y+newD, newD);
+  }
+}
